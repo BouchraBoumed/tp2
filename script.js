@@ -1,27 +1,40 @@
 
-            let ageFemme = parseInt(document.getElementsByTagName("age"));
-            let ageHomme = parseInt(document.getElementsByTagName("age"));
-            let ageNb = parseInt(document.getElementsByTagName("age"));
-            let ageVehicule = parseInt(document.getElementsByTagName("ageVehicule"));
-            let valVehicule = parseFloat(document.getElementsByTagName("val-vehicule"));
-            let nbrReclamations = parseInt(document.getElementsByTagName("reclamation"));
-            let valReclamations = parseFloat(document.getElementsByTagName("montantReclamations"));
-            let kilometrage = parseInt(document.getElementsByTagName("km"));
-            let camera = document.getElementsByTagName("camera");
+            
+            let genre = document.getElementById('genre');
+            let ageVehicule = parseInt(document.getElementsById("ageVehicule"));
+            let valVehicule = parseFloat(document.getElementsById("val-vehicule"));
+            let nbrReclamations = parseInt(document.getElementsById("reclamation"));
+            let valReclamations = parseFloat(document.getElementsById("montantReclamations"));
+            let kilometrage = parseInt(document.getElementsById("km"));
+            let camera = document.getElementsById("camera");
+            let btnSoumettre = document.getElementById("btnSoumettre");
+
+
+            btnSoumettre.addEventListener('click', function(event){
+                let date = document.getElementById('age').value;
+                event.preventDefault();
+                console.log(date);
+                verifierAge(date);
+            })
+
+            function verifierAge(date){
+                let age = calculerAge(date);
+                console.log(age);
+                if(genre.value == "femme"){
+                    if (age < 16 || age >= 100){
+                        document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";              
+                    }else if (genre.value == "homme"){
+                        document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";                
+                    }else if (genre.value == "nb"){
+                        document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";               
+                    }
+                }
+            }
            
-            function calculerAge(age){
-                var dateDeNaissance = new Date(dateDeNaissance);
+            function calculerAge(date){
+                var dateDeNaissance = new Date(date);
                 const dateActuelle = new Date();
-                var ageActuel = dateActuelle.getFullYear()- dateDeNaissance.getFullYear();
-                ageFemme = ageActuel;
-                if (ageFemme < 16 || ageFemme >= 100){
-                    document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";                }
-                ageHomme = ageActuel;
-                if(ageHomme < 18 || ageHomme >= 100 ){
-                    document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";                }
-                ageNb = ageActuel;
-                if(ageNb <18 || ageNb >= 100){
-                    document.getElementById('resultat').innerHTML = "Désolé, nous n'avons aucun produit à offrir pour ce profil de client";                }
+                return dateActuelle.getFullYear()- dateDeNaissance.getFullYear();
             }
 
             function calculerAgeVehicule(ageVehicule){

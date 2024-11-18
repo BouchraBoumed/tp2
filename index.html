@@ -19,6 +19,7 @@
                         <option value="nb">Non-Binaire</option>
                     </select><br> 
                     <label for="age">Quel est votre date de naissance?</label> 
+                    <p id="resultat"></p>
                     <input type="text" id="age" name="age" size="40"><br> 
                     <label for="val-vehicule">Quelle est la valeur d'achat de votre véhicule?</label>
                     <input type="text" id="val-vehicule" name="val-vehicule" size="40"><br>  
@@ -39,7 +40,7 @@
                         <option value="non">Non</option>
                     </select><br>
                     <button type="reset">Vider</button>
-                    <button type="submit">Soumettre</button>
+                    <button method="POST" type="submit" id="btnSoumettre">Soumettre</button>
                 </div>
             </form>
         </div>
